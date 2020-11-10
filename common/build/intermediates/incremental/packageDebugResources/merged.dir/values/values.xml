@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBg">#F5F6F7</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorCc">#ffcccccc</color>
+    <color name="colorF5">#f5f5f5</color>
+    <color name="colorLine">#E5E5E5</color>
+    <color name="colorPrimary">#10385C</color>
+    <color name="colorPrimaryDark">#10385C</color>
+    <color name="colorText33">#333333</color>
+    <color name="colorText66">#666666</color>
+    <color name="colorText99">#999999</color>
+    <color name="colorWhite">#ffffff</color>
+    <item name="last_click_time" type="id"/>
+    <item name="tag_view_position" type="id"/>
+    <string name="bad_network">服务器异常</string>
+    <string name="connect_error">网络连接失败,请检查网络</string>
+    <string name="connect_timeout">连接超时,请稍后再试</string>
+    <string name="empty_text1">暂无数据</string>
+    <string name="no_data_error">服务器没有返回对应的Data数据</string>
+    <string name="parse_error">解析服务器响应数据失败</string>
+    <string name="token_error">请重新登录后操作</string>
+    <string name="unknown_error">未知错误</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Ll365Dialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊背景-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+</resources>

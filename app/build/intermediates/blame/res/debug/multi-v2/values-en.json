@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\android\\workSpace\\CommonDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\keeGan\\.gradle\\caches\\transforms-2\\files-2.1\\3b7a922426c6dfbe521d79eb787b9787\\jetified-Android-PickerView-4.1.9\\res\\values-en\\values-en.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,108,153,200,249,296,345,399",
+                        "endColumns": "52,44,46,48,46,48,53,45",
+                        "endOffsets": "103,148,195,244,291,340,394,440"
+                    },
+                    "to": {
+                        "startLines": "11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "991,1044,1089,1136,1185,1232,1281,1335",
+                        "endColumns": "52,44,46,48,46,48,53,45",
+                        "endOffsets": "1039,1084,1131,1180,1227,1276,1330,1376"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\keeGan\\.gradle\\caches\\transforms-2\\files-2.1\\67c3884877c7a83f2ee3117a91563c7e\\jetified-BasePopup-2.2.7\\res\\values-en\\values-en.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,193,317,473,559,638,703,774,892",
+                        "endColumns": "137,123,155,85,78,64,70,117,98",
+                        "endOffsets": "188,312,468,554,633,698,769,887,986"
+                    }
+                }
+            ]
+        }
+    ]
+}

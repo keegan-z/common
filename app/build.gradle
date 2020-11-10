@@ -1,0 +1,188 @@
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+//映射 default.properties 里面的参数
+Properties params = new Properties()
+
+def loadPropertiesParams = { ->
+    String parameter = project.getProperties().get("parameter")
+    String paramFile = "${rootDir}/default.properties"
+
+    if ("default".equals(parameter)) {
+        paramFile = "${rootDir}/default.properties"
+    }
+
+    println('loadPropertiesParams -- paramFile = ' + paramFile)
+
+    def propFile = new File(paramFile)
+
+    if (propFile.canRead()) {
+        params.load(new FileInputStream(propFile))
+        def inputStream = new BufferedInputStream(new FileInputStream(propFile))
+        params.load(new InputStreamReader(inputStream, "UTF-8"))
+    } else {
+        println("not find mixed.properties")
+        throw new Exception("not find mixed.properties")
+    }
+}
+
+android {
+
+    loadPropertiesParams()
+    println(params)
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId "${params.applicationId}"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        flavorDimensions "default"
+
+        def server_name = params.server_name == null ? "news.ll176.cn" : "${params.server_name}"
+        def server_host = params.server_host == null ? "https://news.ll176.cn" : "${params.server_host}"
+        def isLoadCitys = params.isLoadCitys == null ? false : "${params.isLoadCitys}"
+
+        buildConfigField("String", "SERVER_NAME", "\"${server_name}\"")
+        buildConfigField("String", "SERVER_HOST", "\"${server_host}\"")
+        buildConfigField("boolean", "ISLOADCITYS", isLoadCitys)
+
+        resValue "string", "app_symbol_zh", "${params.app_symbol_zh}"
+
+    }
+
+
+
+    signingConfigs {
+
+        release {
+            getSigningProperties(true)
+        }
+
+        debug {
+            getSigningProperties(false)
+        }
+
+    }
+
+
+    buildTypes {
+
+        release {
+            debuggable true
+            minifyEnabled true //启用Proguard
+            shrinkResources true //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled true //是否启用zipAlign压缩
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+    }
+
+/*    productFlavors {
+
+        local {
+
+        }
+
+    }*/
+
+  /*  productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [HL_CHANNEL_VALUE: name,APP_NAME: "${params.appName}",LAUNCHER_ICON: "${params.launcher_icon}"]
+    }*/
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (variant.buildType.name.equals('release')) {
+                def fileName = "${params.app_symbol_en}_v${defaultConfig.versionName}_${releaseTime()}_release.apk"
+                //output.outputFile = new File(outputFile.parent, fileName)
+                outputFileName = fileName
+            } else if (variant.buildType.name.equals('debug')) {
+                def fileName = "${params.app_symbol_en}_v${defaultConfig.versionName}_${releaseTime()}_debug.apk"
+                //output.outputFile = new File(outputFile.parent, fileName)
+                outputFileName = fileName
+            }
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':common')
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+
+
+}
+
+
+//读取签名配置文件
+def getSigningProperties(boolean isRelease) {
+
+    def propFile = file('key/keystore.properties')
+    if (propFile.canRead()) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(propFile))
+        if (props != null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+                props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+            if(isRelease){
+                android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+                android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+                android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+                android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+            }else {
+                android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
+                android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
+                android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
+                android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
+            }
+        } else {
+            println 'keystore.properties found but some entries are missing'
+            android.buildTypes.release.signingConfig = null
+        }
+    } else {
+        println 'keystore.properties not found'
+        android.buildTypes.release.signingConfig = null
+    }
+}

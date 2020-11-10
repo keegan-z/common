@@ -1,0 +1,31 @@
+R_DEF: Internal format may change without notice
+local
+color colorAccent
+color colorBg
+color colorBlack
+color colorCc
+color colorF5
+color colorLine
+color colorPrimary
+color colorPrimaryDark
+color colorText33
+color colorText66
+color colorText99
+color colorWhite
+drawable icon_default
+id last_click_time
+id tag_view_position
+raw cabks
+raw capk
+string bad_network
+string connect_error
+string connect_timeout
+string empty_text1
+string no_data_error
+string parse_error
+string token_error
+string unknown_error
+style AppTheme
+style Ll365Dialog
+xml file_paths
+xml network_security_config

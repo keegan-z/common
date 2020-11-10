@@ -1,0 +1,15 @@
+<resources>
+
+    <!--公共-->
+    <string name="connect_error">网络连接失败,请检查网络</string>
+    <string name="connect_timeout">连接超时,请稍后再试</string>
+    <string name="bad_network">服务器异常</string>
+    <string name="parse_error">解析服务器响应数据失败</string>
+    <string name="unknown_error">未知错误</string>
+    <string name="no_data_error">服务器没有返回对应的Data数据</string>
+    <string name="token_error">请重新登录后操作</string>
+
+    <string name="empty_text1">暂无数据</string>
+
+
+</resources>

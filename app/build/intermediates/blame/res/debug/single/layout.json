@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\android\\workSpace\\CommonDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\android\\workSpace\\CommonDemo\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\android\\workSpace\\CommonDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "D:\\android\\workSpace\\CommonDemo\\app\\src\\main\\res\\layout\\activity_login.xml"
+    }
+]

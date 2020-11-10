@@ -1,0 +1,76 @@
+ext{
+
+    android  = [
+            compileSdkVersion : 29,
+            buildToolsVersion : '29.0.3',
+            minSdkVersion : 19,
+            targetSdkVersion : 29,
+            versionCode : 1,
+            versionName : '1.0.0.0'
+    ]
+
+    version =  [
+            gsonVersion : '2.8.6',
+            retrofitVersion : '2.9.0',
+            converterGsonVersion : '2.0.2',
+            adapterRxjava2Version : '2.3.0',
+            converterScalarsVersion : '2.1.0',
+            loggingInterceptorVersion : '3.4.1',
+            rxjavaVersion : '2.1.1',
+            rxandroidVersion : '2.0.1',
+            customactivityoncrashVersion : '2.2.0',
+            autosizeVersion : '1.2.1',
+            xlogVersion : '1.6.1',
+            rxlifecycleVersion : '3.1.0',
+            bannerVersion : '2.0.11',
+            glideVersion : '4.10.0',
+            multidexVersion : '1.0.3',
+            pickerViewVersion : '4.1.9',
+            easyPhotoVersion : 'andX-2.5.3',
+            lubanVersion : '1.1.8',
+            basePopupVersion : '2.2.7',
+            jsbridgeVersion : '1.0.3',
+            titlebarVersion : '6.5',
+            kongzueDialogVersion : '3.2.1',
+            immersionbarVersion : '3.0.0'
+
+    ]
+
+    dependencies = [
+
+        "gson"      :   "com.google.code.gson:gson:${version["gsonVersion"]}",
+        "retrofit"      :   "com.squareup.retrofit2:retrofit:${version["retrofitVersion"]}",
+        "converter-gson"      :   "com.squareup.retrofit2:converter-gson:${version["converterGsonVersion"]}",
+        "adapter-rxjava2"      :   "com.squareup.retrofit2:adapter-rxjava2:${version["adapterRxjava2Version"]}",
+        "converter-scalars"      :   "com.squareup.retrofit2:converter-scalars:${version["converterScalarsVersion"]}",
+        "logging-interceptor"      :   "com.squareup.okhttp3:logging-interceptor:${version["loggingInterceptorVersion"]}",
+        "rxjava"      :   "io.reactivex.rxjava2:rxjava:${version["rxjavaVersion"]}",
+        "rxandroid"      :   "io.reactivex.rxjava2:rxandroid:${version["rxandroidVersion"]}",
+        //错误日志收集
+        "customactivityoncrash"      :   "cat.ereza:customactivityoncrash:${version["customactivityoncrashVersion"]}",
+        //屏幕适配
+        "autosize"      :   "me.jessyan:autosize:${version["autosizeVersion"]}",
+        //log
+        "xlog"      :   "com.elvishew:xlog:${version["xlogVersion"]}",
+        //rxjava生命周期管理
+        "rxlifecycle"      :   "com.trello.rxlifecycle3:rxlifecycle:${version["rxlifecycleVersion"]}",
+        "rxlifecycle-android"      :   "com.trello.rxlifecycle3:rxlifecycle-android:${version["rxlifecycleVersion"]}",
+        "rxlifecycle-components"      :   "com.trello.rxlifecycle3:rxlifecycle-components:${version["rxlifecycleVersion"]}",
+        //banner
+        "banner"      :   "com.youth.banner:banner:${version["bannerVersion"]}",
+        //Glide
+        "glide"      :   "com.github.bumptech.glide:glide:${version["glideVersion"]}",
+        "glide:compiler"      :   "com.github.bumptech.glide:compiler:${version["glideVersion"]}",
+        "multidex"      :   "com.android.support:multidex:${version["multidexVersion"]}",
+        "PickerView"      :   "com.contrarywind:Android-PickerView:${version["pickerViewVersion"]}",
+        "EasyPhotos"      :   "com.joker.HuanTanSheng:EasyPhotos:${version["easyPhotoVersion"]}",
+        "Luban"      :   "top.zibin:Luban:${version["lubanVersion"]}",
+        "BasePopup"      :   "com.github.razerdp:BasePopup:${version["basePopupVersion"]}",
+        "jsbridge"      :   "com.smallbuer:jsbridge:${version["jsbridgeVersion"]}",
+        "titlebar"      :   "com.hjq:titlebar:${version["titlebarVersion"]}",
+        "dialog"      :   "com.kongzue.dialog_v3x:dialog:${version["kongzueDialogVersion"]}",
+        "immersionbar"      :   "com.gyf.immersionbar:immersionbar:${version["immersionbarVersion"]}"
+
+    ]
+
+}
